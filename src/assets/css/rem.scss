@@ -1,0 +1,55 @@
+$green:#51b959;
+$orange:#f69237;
+$red:#f24858;
+$blue:#139feb;
+$white:#ffffff;
+$grey:#999999;
+$dark:#666;
+$black:#242230;
+$border-grey:#e3e3e3;
+$bg-grey:#efefef;
+$bg-warn:#fbf7d3;
+$icon-grey:#cdcdcd;
+$opacity60:rgba(0,0,0,.60);
+
+$bgf6:#f6f6f6;
+$black3:#323333;
+$dark-red:#d64852;
+$dark-yellow:#e38a3c;
+$dark-green:#51a957;
+$light-orange:#fcf0ed;
+$light-yellow:#fbeee2;
+$light-green:#ecf2e6;
+$light-grey:#ececec;
+$light-blue:#ecf2fa;
+
+
+@function px2rem($px){
+	 $rem:37.5px;
+	 @return $px/$rem+rem;
+}	
+
+$font30:px2rem(30px);
+$font24:px2rem(24px);
+$font20:px2rem(20px);
+$font16:px2rem(16px);
+$font14:px2rem(14px);
+$font12:px2rem(12px);
+$font10:px2rem(10px);
+
+
+
+@mixin padlf10{
+	padding:0 px2rem(10px);
+}
+
+@mixin border-tb{
+	border-top:1px solid $border-grey;
+	border-bottom: 1px solid $border-grey;
+}
+@mixin border-r{
+	border-right:1px solid $border-grey;
+}
+@mixin border-b{
+	border-bottom:1px solid $border-grey;
+}
