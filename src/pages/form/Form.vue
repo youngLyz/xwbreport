@@ -67,11 +67,15 @@
 					console.log(i+":"+this.formVal[i]);
 				}				
 			},
+			handleFormChange (name,val) {
+				this.formVal[name] = val;
+			}
 		},
 		mounted () {
-			Bus.$on('changedFormObject',(name,val) =>{
-				this.formVal[name] = val;
-			});
+			Bus.$on('changedFormObject',this.handleFormChange);
+		},
+		beforeDestroy () {
+			Bus.$off('changedFormObject',this.handleFormChange);
 		}
 	}
 </script>

@@ -21,30 +21,30 @@ const createLintingRule = () => ({
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
+  entry: {//模块的入口文件
     app: './src/main.js'
   },
-  output: {
+  output: {//模块的输出文件
     path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    filename: '[name].js',//使用占位符(substitutions)来确保每个文件具有唯一的名称
+    publicPath: process.env.NODE_ENV === 'production'//网站运行时的访问路径
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
-  resolve: {
+  resolve: {//对模块后缀名的简写，配置后，原本是require('./components/app.vue') 可以简写为require('./components/app')。
     extensions: ['.js', '.vue', '.json'],
-    alias: {
+    alias: {//别名
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'css':resolve('src/assets/css')
     }
   },
-  module: {
+  module: {//加载器:将不同的文件加载到js文件中如css-loader,less-loader,style-loader，url-loader等
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue-loader',//处理.vue格式的模块
         options: vueLoaderConfig
       },
       {
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        loader: 'url-loader',//将小于8kb的图片、iconfont字体都转为base64，超过8kb的才会生成具体文件
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
