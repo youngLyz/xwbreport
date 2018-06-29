@@ -1,6 +1,6 @@
 <template>
 	<div class="form-btn-group">
-		<router-link to="/detail" class="btn-default">检测报告</router-link>
+		<router-link :to=this.linkUrl class="btn-default">检测报告</router-link>
 		<a href="javascript:void(0)" @click="handleSubmitClick" class="btn-default">开始检测</a>
 	</div>	
 </template>
@@ -8,11 +8,17 @@
 <script type="text/javascript">
 	export default {
 		name: 'FootBtns',
+		props:['formId'],
+		data () {
+			return {
+				linkUrl:"/detail/"+this.formId
+			}
+		},
 		methods: {
 			handleSubmitClick (){
 				this.$emit('submitForm');
 			}
-		}
+		}	
 	}
 </script>
 

@@ -8,6 +8,7 @@ import ReportDetail from '@/pages/detail/Detail'
 Vue.use(Router)
 
 export default new Router({
+  //mode: 'history',
   routes: [
     {
       path: '/',
@@ -20,7 +21,7 @@ export default new Router({
       component: ReportForm
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'ReportDetail',
       component: ReportDetail
     }

@@ -1,7 +1,6 @@
 <template>
 	<div>
-		<report-header 
-			:backUrl="backUrl"
+		<report-header 			
 			:headerName="headerName"
 			></report-header>
 		<report-search @changeShow="handleChangeShowList"></report-search>		
@@ -9,8 +8,13 @@
 			v-show="showList"
 			:searchText="searchText"
 			:slist="slist"></search-list>
-		<form-items :formVal="formVal"></form-items>
-		<foot-btns @submitForm="handleFormSubmit"></foot-btns>
+		<div v-show="!showList">
+			<form-items :formVal="formVal"></form-items>
+			<foot-btns 
+				:formId="formVal.id"
+				@submitForm="handleFormSubmit"></foot-btns>	
+		</div>	
+		
 	</div>	
 </template>
 
@@ -24,8 +28,7 @@
 	export default {
 		name: "ReporForm",
 		data () {
-			return {
-				backUrl:"/",
+			return {				
 				headerName:"检查报告Form",
 				showList:false,
 				searchText:'',
@@ -38,6 +41,7 @@
 					}
 				],
 				formVal:{
+					id:this.$route.params.id,
 					car_city: '苏',
 					car_num: '15236',
 					car_type: '宝马 GT 320i 2.0T 2015',

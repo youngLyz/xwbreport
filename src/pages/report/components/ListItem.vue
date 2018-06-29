@@ -1,5 +1,5 @@
 <template>
-	<div class="record">
+	<div class="record" @click="clickListItem(itemVal.id)">
 		<div class="car-file">
 			<img :src="itemVal.bgImg" class="car-img">
 			<ul>
@@ -37,6 +37,11 @@
 		name: "ListItem",
 		props: {
 			itemVal: Object
+		},
+		methods: {
+			clickListItem (id) {
+				this.$router.push("/detail/"+id);
+			}
 		}
 	}
 </script>

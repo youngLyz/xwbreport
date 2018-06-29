@@ -1,6 +1,6 @@
 <template>	
 	<header class="top-header">
-	 	<router-link to="backUrl" class="iconfont icon-return"></router-link>
+	 	<span @click="goBack" class="iconfont icon-return"></span>
 	 	<h1 class="top-title">{{headerName}}</h1>
 	</header>
 	
@@ -9,9 +9,13 @@
 <script type="text/javascript">
 	export default {
 		name: "ReportHeader",
-		props: {
-			backUrl: String,
+		props: {		
 			headerName: String
+		},
+		methods: {
+			goBack () {
+				this.$router.go(-1)
+			}
 		}
 	}
 </script>

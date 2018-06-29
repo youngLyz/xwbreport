@@ -1,7 +1,6 @@
 <template>
 	<div>
-		<report-header 
-			:backUrl="backUrl"
+		<report-header 			
 			:headerName="headerName"
 			></report-header>
 		<report-search @changeShow="handleChangeShowList"></report-search>
@@ -25,8 +24,7 @@
 	export default {
 		name: "ReportIndex",
 		data () {
-			return {
-				backUrl:"/",
+			return {				
 				headerName:"检查报告",
 				showList:false,
 				searchText:'',
